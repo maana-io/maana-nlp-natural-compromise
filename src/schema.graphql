@@ -41,6 +41,8 @@ type Query {
   # Natural
   tokenize(text: String!, tokenizerType: SUPPORTED_TOKENIZERS): [String]
 
+  ## String Distances
+
   hammingDistance(source: String, target: String): Int
   jaroWinklerDistance(source: String, target: String): Int
   levenshteinDistance(
@@ -59,6 +61,8 @@ type Query {
   diceCoefficient(source: String, target: String): Float
 
   ## Classififers
+
+  ## Stemmers
 }
 
 type Mutation {
