@@ -1,0 +1,1 @@
+{"classifier":{"classFeatures":{"bar":{"0":4}},"classTotals":{"bar":4},"totalExamples":4,"smoothing":1},"docs":[{"label":"bar","text":["foo"]},{"label":"bar","text":["foo"]},{"label":"bar","text":["foo"]}],"features":{"foo":3},"stemmer":{},"lastAdded":3,"events":{"domain":null,"_events":{},"_eventsCount":0}}

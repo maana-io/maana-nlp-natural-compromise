@@ -1,5 +1,13 @@
 # source: https://maana-incubator.herokuapp.com/nlp
-# timestamp: Tue Oct 16 2018 12:33:23 GMT-0700 (PDT)
+# timestamp: Tue Oct 16 2018 16:42:42 GMT-0700 (PDT)
+
+type AggregateClassification {
+  count: Int!
+}
+
+type AggregateClassifier {
+  count: Int!
+}
 
 type AggregateTag {
   count: Int!
@@ -14,6 +22,445 @@ type BatchPayload {
   count: Long!
 }
 
+type Classification {
+  label: String
+  value: Float
+}
+
+"""A connection to a list of items."""
+type ClassificationConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ClassificationEdge]!
+  aggregate: AggregateClassification!
+}
+
+input ClassificationCreateInput {
+  label: String
+  value: Float
+}
+
+"""An edge in a connection."""
+type ClassificationEdge {
+  """The item at the end of the edge."""
+  node: Classification!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum ClassificationOrderByInput {
+  label_ASC
+  label_DESC
+  value_ASC
+  value_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type ClassificationPreviousValues {
+  label: String
+  value: Float
+}
+
+type ClassificationSubscriptionPayload {
+  mutation: MutationType!
+  node: Classification
+  updatedFields: [String!]
+  previousValues: ClassificationPreviousValues
+}
+
+input ClassificationSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ClassificationSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ClassificationSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ClassificationSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: ClassificationWhereInput
+}
+
+input ClassificationUpdateInput {
+  label: String
+  value: Float
+}
+
+input ClassificationWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ClassificationWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ClassificationWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ClassificationWhereInput!]
+  label: String
+
+  """All values that are not equal to given value."""
+  label_not: String
+
+  """All values that are contained in given list."""
+  label_in: [String!]
+
+  """All values that are not contained in given list."""
+  label_not_in: [String!]
+
+  """All values less than the given value."""
+  label_lt: String
+
+  """All values less than or equal the given value."""
+  label_lte: String
+
+  """All values greater than the given value."""
+  label_gt: String
+
+  """All values greater than or equal the given value."""
+  label_gte: String
+
+  """All values containing the given string."""
+  label_contains: String
+
+  """All values not containing the given string."""
+  label_not_contains: String
+
+  """All values starting with the given string."""
+  label_starts_with: String
+
+  """All values not starting with the given string."""
+  label_not_starts_with: String
+
+  """All values ending with the given string."""
+  label_ends_with: String
+
+  """All values not ending with the given string."""
+  label_not_ends_with: String
+  value: Float
+
+  """All values that are not equal to given value."""
+  value_not: Float
+
+  """All values that are contained in given list."""
+  value_in: [Float!]
+
+  """All values that are not contained in given list."""
+  value_not_in: [Float!]
+
+  """All values less than the given value."""
+  value_lt: Float
+
+  """All values less than or equal the given value."""
+  value_lte: Float
+
+  """All values greater than the given value."""
+  value_gt: Float
+
+  """All values greater than or equal the given value."""
+  value_gte: Float
+}
+
+type Classifier implements Node {
+  id: ID!
+  name: String
+  status: String
+  serialized: String
+}
+
+"""A connection to a list of items."""
+type ClassifierConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ClassifierEdge]!
+  aggregate: AggregateClassifier!
+}
+
+input ClassifierCreateInput {
+  name: String
+  status: String
+  serialized: String
+}
+
+"""An edge in a connection."""
+type ClassifierEdge {
+  """The item at the end of the edge."""
+  node: Classifier!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum ClassifierOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  status_ASC
+  status_DESC
+  serialized_ASC
+  serialized_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type ClassifierPreviousValues {
+  id: ID!
+  name: String
+  status: String
+  serialized: String
+}
+
+type ClassifierSubscriptionPayload {
+  mutation: MutationType!
+  node: Classifier
+  updatedFields: [String!]
+  previousValues: ClassifierPreviousValues
+}
+
+input ClassifierSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ClassifierSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ClassifierSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ClassifierSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: ClassifierWhereInput
+}
+
+input ClassifierUpdateInput {
+  name: String
+  status: String
+  serialized: String
+}
+
+input ClassifierWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ClassifierWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ClassifierWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ClassifierWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  status: String
+
+  """All values that are not equal to given value."""
+  status_not: String
+
+  """All values that are contained in given list."""
+  status_in: [String!]
+
+  """All values that are not contained in given list."""
+  status_not_in: [String!]
+
+  """All values less than the given value."""
+  status_lt: String
+
+  """All values less than or equal the given value."""
+  status_lte: String
+
+  """All values greater than the given value."""
+  status_gt: String
+
+  """All values greater than or equal the given value."""
+  status_gte: String
+
+  """All values containing the given string."""
+  status_contains: String
+
+  """All values not containing the given string."""
+  status_not_contains: String
+
+  """All values starting with the given string."""
+  status_starts_with: String
+
+  """All values not starting with the given string."""
+  status_not_starts_with: String
+
+  """All values ending with the given string."""
+  status_ends_with: String
+
+  """All values not ending with the given string."""
+  status_not_ends_with: String
+  serialized: String
+
+  """All values that are not equal to given value."""
+  serialized_not: String
+
+  """All values that are contained in given list."""
+  serialized_in: [String!]
+
+  """All values that are not contained in given list."""
+  serialized_not_in: [String!]
+
+  """All values less than the given value."""
+  serialized_lt: String
+
+  """All values less than or equal the given value."""
+  serialized_lte: String
+
+  """All values greater than the given value."""
+  serialized_gt: String
+
+  """All values greater than or equal the given value."""
+  serialized_gte: String
+
+  """All values containing the given string."""
+  serialized_contains: String
+
+  """All values not containing the given string."""
+  serialized_not_contains: String
+
+  """All values starting with the given string."""
+  serialized_starts_with: String
+
+  """All values not starting with the given string."""
+  serialized_not_starts_with: String
+
+  """All values ending with the given string."""
+  serialized_ends_with: String
+
+  """All values not ending with the given string."""
+  serialized_not_ends_with: String
+}
+
+input ClassifierWhereUniqueInput {
+  id: ID
+  name: String
+}
+
 """
 The `Long` scalar type represents non-fractional signed whole numeric values.
 Long can represent values between -(2^63) and 2^63 - 1.
@@ -23,13 +470,22 @@ scalar Long
 type Mutation {
   createUser(data: UserCreateInput!): User!
   createTag(data: TagCreateInput!): Tag!
+  createClassifier(data: ClassifierCreateInput!): Classifier!
+  createClassification(data: ClassificationCreateInput!): Classification!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateClassifier(data: ClassifierUpdateInput!, where: ClassifierWhereUniqueInput!): Classifier
   deleteUser(where: UserWhereUniqueInput!): User
+  deleteClassifier(where: ClassifierWhereUniqueInput!): Classifier
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  upsertClassifier(where: ClassifierWhereUniqueInput!, create: ClassifierCreateInput!, update: ClassifierUpdateInput!): Classifier!
   updateManyUsers(data: UserUpdateInput!, where: UserWhereInput): BatchPayload!
   updateManyTags(data: TagUpdateInput!, where: TagWhereInput): BatchPayload!
+  updateManyClassifiers(data: ClassifierUpdateInput!, where: ClassifierWhereInput): BatchPayload!
+  updateManyClassifications(data: ClassificationUpdateInput!, where: ClassificationWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
   deleteManyTags(where: TagWhereInput): BatchPayload!
+  deleteManyClassifiers(where: ClassifierWhereInput): BatchPayload!
+  deleteManyClassifications(where: ClassificationWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -62,9 +518,14 @@ type PageInfo {
 type Query {
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   tags(where: TagWhereInput, orderBy: TagOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Tag]!
+  classifiers(where: ClassifierWhereInput, orderBy: ClassifierOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Classifier]!
+  classifications(where: ClassificationWhereInput, orderBy: ClassificationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Classification]!
   user(where: UserWhereUniqueInput!): User
+  classifier(where: ClassifierWhereUniqueInput!): Classifier
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   tagsConnection(where: TagWhereInput, orderBy: TagOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TagConnection!
+  classifiersConnection(where: ClassifierWhereInput, orderBy: ClassifierOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ClassifierConnection!
+  classificationsConnection(where: ClassificationWhereInput, orderBy: ClassificationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ClassificationConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -76,6 +537,8 @@ type Query {
 type Subscription {
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
   tag(where: TagSubscriptionWhereInput): TagSubscriptionPayload
+  classifier(where: ClassifierSubscriptionWhereInput): ClassifierSubscriptionPayload
+  classification(where: ClassificationSubscriptionWhereInput): ClassificationSubscriptionPayload
 }
 
 type Tag {

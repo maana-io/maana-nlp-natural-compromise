@@ -10,3 +10,15 @@ type Tag {
   normal: String
   tags: [String!]
 }
+
+type Classifier {
+  id: ID! @unique
+  name: String @unique
+  status: String
+  serialized: String
+}
+
+type Classification {
+  label: String
+  value: Float
+}

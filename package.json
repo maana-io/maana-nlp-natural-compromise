@@ -1,7 +1,7 @@
 {
   "name": "graphql-boilerplate",
   "scripts": {
-    "start": "node -r ./src/index.js",
+    "start": "nodemon -e js,graphql -x node -r ./src/index.js",
     "debug": "nodemon -e js,graphql -x node --inspect -r dotenv/config src/index.js",
     "playground": "graphql playground",
     "dev": "npm-run-all --parallel start playground"
@@ -12,7 +12,8 @@
     "graphql-yoga": "1.16.2",
     "jsonwebtoken": "8.3.0",
     "natural": "^0.6.1",
-    "prisma-binding": "2.1.6"
+    "prisma-binding": "2.1.6",
+    "uuid4": "^1.1.4"
   },
   "devDependencies": {
     "dotenv": "6.0.0",

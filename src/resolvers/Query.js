@@ -19,7 +19,8 @@ const {
   jaroWinklerDistance,
   levenshteinDistance,
   damerauLevenshteinDistance,
-  diceCoefficient
+  diceCoefficient,
+  classify
 } = require('../naturalWrapper')
 
 const Query = {
@@ -125,6 +126,10 @@ const Query = {
     info
   ) {
     return hammingDistance(source, target)
+  },
+
+  async classify(parent, { classifierName, text }, ctx, info) {
+    return classify(classifierName, text)
   }
 }
 

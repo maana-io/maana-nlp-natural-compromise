@@ -62,12 +62,21 @@ type Query {
 
   ## Classififers
 
+  classify(classifierName: String, text: String): [Classification]
+
   ## Stemmers
 }
 
 type Mutation {
   signup(email: String!, password: String!, name: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
+
+  createClassifier(name: String!): Classifier
+  addLabeledDocumentToClassifier(
+    classifierName: String
+    text: String
+    label: String
+  ): Classifier
 }
 
 type Subscription {
