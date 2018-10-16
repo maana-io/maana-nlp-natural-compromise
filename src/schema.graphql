@@ -1,0 +1,82 @@
+# import Post from "./generated/prisma.graphql"
+enum SUPPORTED_TOKENIZERS {
+  WordTokenizer
+  WordPunctTokenizer
+  SentenceTokenizer
+}
+
+type Query {
+  me: User
+
+  # Compromise
+  nouns(text: String!): [String]
+  nounsTags(text: String!): [Tag]
+
+  verbs(text: String!): [String]
+  verbsTags(text: String!): [Tag]
+
+  values(text: String!): [String]
+  valuesTags(text: String!): [Tag]
+
+  sentences(text: String!): [String]
+  sentencesTags(text: String!): [Tag]
+
+  contractions(text: String!): [String]
+  contractionsTags(text: String!): [Tag]
+
+  compromiseMatch(text: String, expression: String): [String]
+
+  people(text: String!): [String]
+  peopleTags(text: String!): [Tag]
+
+  places(text: String!): [String]
+  placesTags(text: String!): [Tag]
+
+  organizations(text: String!): [String]
+  organizationsTags(text: String!): [Tag]
+
+  topics(text: String!): [String]
+  topicsTags(text: String!): [Tag]
+
+  # Natural
+  tokenize(text: String!, tokenizerType: SUPPORTED_TOKENIZERS): [String]
+
+  hammingDistance(source: String, target: String): Int
+  jaroWinklerDistance(source: String, target: String): Int
+  levenshteinDistance(
+    source: String
+    target: String
+    insertionCost: Int
+    deletionCost: Int
+    substitutionCost: Int
+  ): Int
+  damerauLevenshteinDistance(
+    source: String
+    target: String
+    transportationCost: Int
+    restricted: Boolean
+  ): Int
+  diceCoefficient(source: String, target: String): Float
+
+  ## Classififers
+}
+
+type Mutation {
+  signup(email: String!, password: String!, name: String!): AuthPayload!
+  login(email: String!, password: String!): AuthPayload!
+}
+
+type Subscription {
+  feedSubscription: String!
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+type User {
+  id: ID!
+  email: String!
+  name: String!
+}
