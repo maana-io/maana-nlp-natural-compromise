@@ -5,6 +5,21 @@ enum SUPPORTED_TOKENIZERS {
   SentenceTokenizer
 }
 
+enum NORMALIZATION_OPTIONS {
+  whitespace
+  case
+  numbers
+  punctuation
+  unicode
+  contractions
+  acronyms
+  parentheses
+  possessives
+  plurals
+  verbs
+  honorifics
+}
+
 type Query {
   me: User
 
@@ -14,7 +29,6 @@ type Query {
 
   verbs(text: String!): [String]
   verbsTags(text: String!): [Tag]
-
   values(text: String!): [String]
   valuesTags(text: String!): [Tag]
 
@@ -37,6 +51,8 @@ type Query {
 
   topics(text: String!): [String]
   topicsTags(text: String!): [Tag]
+
+  normalize(text: String, options: [NORMALIZATION_OPTIONS!]): String
 
   # Natural
   tokenize(text: String!, tokenizerType: SUPPORTED_TOKENIZERS): [String]

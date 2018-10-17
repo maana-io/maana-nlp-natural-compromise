@@ -53,6 +53,17 @@ const Wrapper = {
     return nlp(text)
       .organizations()
       .out(outType)
+  },
+
+  normalize: (text, options) => {
+    let opts = {}
+    options.forEach(option => {
+      opts[option] = true
+    })
+
+    return nlp(text)
+      .normalize(options)
+      .out('text')
   }
 }
 

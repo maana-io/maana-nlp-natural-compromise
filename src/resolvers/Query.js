@@ -10,7 +10,8 @@ const {
   people,
   places,
   organizations,
-  topics
+  topics,
+  normalize
 } = require('../compromiseWrapper')
 
 const {
@@ -95,6 +96,10 @@ const Query = {
   },
   contractionsTags(parent, { text }, ctx, info) {
     return contractions(text, 'tags')
+  },
+
+  normalize(parent, { text, options }, ctx, info) {
+    return normalize(text, options)
   },
 
   //Natural
