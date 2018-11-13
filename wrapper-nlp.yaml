@@ -1,0 +1,37 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: graphql-nlp
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: graphql-nlp
+    spec:
+      containers:
+        - name: graphql-nlp
+          image: wrappers.azurecr.io/roieki/graphql-nlp:v1
+          ports:
+            - containerPort: 4000
+          resources:
+            requests:
+              cpu: 250m
+            limits:
+              cpu: 500m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: graphql-nlp-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+  selector:
+    app: graphql-nlp

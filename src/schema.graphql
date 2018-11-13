@@ -24,38 +24,38 @@ type Query {
   me: User
 
   # Compromise
-  nouns(text: String!): [String]
-  nounsTags(text: String!): [Tag]
+  nouns(texts: [String!]): [String]
+  nounsTags(texts: [String!]): [Tag]
 
-  verbs(text: String!): [String]
-  verbsTags(text: String!): [Tag]
-  values(text: String!): [String]
-  valuesTags(text: String!): [Tag]
+  verbs(texts: [String!]): [String]
+  verbsTags(texts: [String!]): [Tag]
+  values(texts: [String!]): [String]
+  valuesTags(texts: [String!]): [Tag]
 
-  sentences(text: String!): [String]
-  sentencesTags(text: String!): [Tag]
+  sentences(texts: [String!]): [String]
+  sentencesTags(texts: [String!]): [Tag]
 
-  contractions(text: String!): [String]
-  contractionsTags(text: String!): [Tag]
+  contractions(texts: [String!]): [String]
+  contractionsTags(texts: [String!]): [Tag]
 
   compromiseMatch(text: String, expression: String): [String]
 
-  people(text: String!): [String]
-  peopleTags(text: String!): [Tag]
+  people(texts: [String!]): [String]
+  peopleTags(texts: [String!]): [Tag]
 
-  places(text: String!): [String]
-  placesTags(text: String!): [Tag]
+  places(texts: [String!]): [String]
+  placesTags(texts: [String!]): [Tag]
 
-  organizations(text: String!): [String]
-  organizationsTags(text: String!): [Tag]
+  organizations(texts: [String!]): [String]
+  organizationsTags(texts: [String!]): [Tag]
 
-  topics(text: String!): [String]
-  topicsTags(text: String!): [Tag]
+  topics(texts: [String!]): [String]
+  topicsTags(texts: [String!]): [Tag]
 
   normalize(text: String, options: [NORMALIZATION_OPTIONS!]): String
 
   # Natural
-  tokenize(text: String!, tokenizerType: SUPPORTED_TOKENIZERS): [String]
+  tokenize(texts: [String!], tokenizerType: SUPPORTED_TOKENIZERS): [String]
 
   ## String Distances
 

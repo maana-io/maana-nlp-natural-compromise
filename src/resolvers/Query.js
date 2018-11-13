@@ -24,78 +24,138 @@ const {
   classify
 } = require('../naturalWrapper')
 
+const flatten = arr => {
+  return arr.reduce(function(prev, curr) {
+    return prev.concat(curr)
+  })
+}
+
 const Query = {
   me(parent, args, ctx, info) {
     const id = getUserId(ctx)
     return ctx.db.query.user({ where: { id } }, info)
   },
 
-  nouns(parent, { text }, ctx, info) {
-    return nouns(text, 'array')
+  nouns(parent, { texts }, ctx, info) {
+    let res = texts.map(text => {
+      return nouns(text, 'array')
+    })
+    return flatten(res)
   },
 
-  verbs(parent, { text }, ctx, info) {
-    return verbs(text, 'array')
+  verbs(parent, { texts }, ctx, info) {
+    let res = texts.map(text => {
+      return verbs(text, 'array')
+    })
+    return flatten(res)
   },
 
-  values(parent, { text }, ctx, info) {
-    return values(text, 'array')
+  values(parent, { texts }, ctx, info) {
+    let res = texts.map(text => {
+      return values(text, 'array')
+    })
+    return flatten(res)
   },
 
-  people(parent, { text }, ctx, info) {
-    return people(text, 'array')
+  people(parent, { texts }, ctx, info) {
+    let res = texts.map(text => {
+      return people(text, 'array')
+    })
+    return flatten(res)
   },
 
-  places(parent, { text }, ctx, info) {
-    return places(text, 'array')
+  places(parent, { texts }, ctx, info) {
+    let res = texts.map(text => {
+      return places(text, 'array')
+    })
+    return flatten(res)
   },
 
-  organizations(parent, { text }, ctx, info) {
-    return organizations(text, 'array')
+  organizations(parent, { texts }, ctx, info) {
+    let res = texts.map(text => {
+      return organizations(text, 'array')
+    })
+    return flatten(res)
   },
 
-  topics(parent, { text }, ctx, info) {
-    return topics(text, 'array')
+  topics(parent, { texts }, ctx, info) {
+    let res = texts.map(text => {
+      return topics(text, 'array')
+    })
+    return flatten(res)
   },
 
-  sentences(parent, { text }, ctx, info) {
-    return sentences(text, 'array')
+  sentences(parent, { texts }, ctx, info) {
+    let res = texts.map(text => {
+      return sentences(text, 'array')
+    })
+    return flatten(res)
   },
 
-  contractions(parent, { text }, ctx, info) {
-    return contractions(text, 'array')
+  contractions(parent, { texts }, ctx, info) {
+    let res = texts.map(text => {
+      return contractions(text, 'array')
+    })
+    return flatten(res)
   },
 
   compromiseMatch(parent, { text, expression }, ctx, info) {
     return match(text, expression)
   },
 
-  nounsTags(parent, { text }, ctx, info) {
-    return nouns(text, 'tags')
+  nounsTags(parent, { texts }, ctx, info) {
+    let res = texts.map(text => {
+      return nouns(text, 'tags')
+    })
+    return flatten(res)
   },
-  verbsTags(parent, { text }, ctx, info) {
-    return verbs(text, 'tags')
+  verbsTags(parent, { texts }, ctx, info) {
+    let res = texts.map(text => {
+      return verbs(text, 'tags')
+    })
+    return flatten(res)
   },
-  valuesTags(parent, { text }, ctx, info) {
-    return values(text, 'tags')
+  valuesTags(parent, { texts }, ctx, info) {
+    let res = texts.map(text => {
+      return values(text, 'tags')
+    })
+    return flatten(res)
   },
-  peopleTags(parent, { text }, ctx, info) {
-    return people(text, 'tags')
+  peopleTags(parent, { texts }, ctx, info) {
+    let res = texts.map(text => {
+      return people(text, 'tags')
+    })
+    return flatten(res)
   },
-  placesTags(parent, { text }, ctx, info) {
-    return places(text, 'tags')
+  placesTags(parent, { texts }, ctx, info) {
+    let res = texts.map(text => {
+      return places(text, 'tags')
+    })
+    return flatten(res)
   },
-  organizationsTags(parent, { text }, ctx, info) {
-    return organizations(text, 'tags')
+  organizationsTags(parent, { texts }, ctx, info) {
+    let res = texts.map(text => {
+      return organizations(text, 'tags')
+    })
+    return flatten(res)
   },
-  topicsTags(parent, { text }, ctx, info) {
-    return topics(text, 'tags')
+  topicsTags(parent, { texts }, ctx, info) {
+    let res = texts.map(text => {
+      return topics(text, 'tags')
+    })
+    return flatten(res)
   },
-  sentencesTags(parent, { text }, ctx, info) {
-    return sentences(text, 'tags')
+  sentencesTags(parent, { texts }, ctx, info) {
+    let res = texts.map(text => {
+      return sentences(text, 'tags')
+    })
+    return flatten(res)
   },
-  contractionsTags(parent, { text }, ctx, info) {
-    return contractions(text, 'tags')
+  contractionsTags(parent, { texts }, ctx, info) {
+    let res = texts.map(text => {
+      return contractions(text, 'tags')
+    })
+    return flatten(res)
   },
 
   normalize(parent, { text, options }, ctx, info) {
