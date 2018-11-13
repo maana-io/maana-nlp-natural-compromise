@@ -13,6 +13,12 @@ const Wrapper = {
       .out(outType)
   },
 
+  topics: (text, outType) => {
+    return nlp(text)
+      .topics()
+      .out(outType)
+  },
+
   values: (text, outType) => {
     return nlp(text)
       .values()
