@@ -82,8 +82,8 @@ type Query {
 
   ## Sentiment
 
-  sentiment(texts: [String!]!): [Float!]!
-  average(values: [Float!]!): Float!
+  sentiment(texts: [String!]!): [String!]!
+  average(values: [Float!]!): String!
 }
 
 type Mutation {

@@ -204,15 +204,15 @@ const Query = {
     let res = texts.map(text => {
       var sentiment = new Sentiment()
       let s = sentiment.analyze(text)
-      return s.score
+      return s.score.toString()
     })
 
     return res
   },
 
   average(parent, { values }, ctx, info) {
-    const arrSum = values.reduce((a, b) => a + b, 0)
-    return arrSum / values.length
+    const arrSum = values.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
+    return (arrSum / values.length).toString()
   }
 }
 
