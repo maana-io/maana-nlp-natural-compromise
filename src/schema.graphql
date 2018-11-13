@@ -80,7 +80,10 @@ type Query {
 
   classify(classifierName: String, text: String): [Classification]
 
-  ## Stemmers
+  ## Sentiment
+
+  sentiment(texts: [String!]!): [Float!]!
+  average(values: [Float!]!): Float!
 }
 
 type Mutation {

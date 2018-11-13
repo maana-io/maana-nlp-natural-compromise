@@ -24,6 +24,9 @@ const {
   classify
 } = require('../naturalWrapper')
 
+const Sentiment = require('sentiment')
+let sentiment = new Sentiment()
+
 const flatten = arr => {
   return arr.reduce(function(prev, curr) {
     return prev.concat(curr)
@@ -195,6 +198,21 @@ const Query = {
 
   async classify(parent, { classifierName, text }, ctx, info) {
     return classify(classifierName, text)
+  },
+
+  sentiment(parent, { texts }, ctx, info) {
+    let res = texts.map(text => {
+      var sentiment = new Sentiment()
+      let s = sentiment.analyze(text)
+      return s.score
+    })
+
+    return res
+  },
+
+  average(parent, { values }, ctx, info) {
+    const arrSum = values.reduce((a, b) => a + b, 0)
+    return arrSum / values.length
   }
 }
 
