@@ -1,6 +1,5 @@
 <h1 align="center"><strong>Boilerplate for an Advanced GraphQL Server</strong></h1>
 
-<br />
 
 ![](https://imgur.com/lIi4YrZ.png)
 
