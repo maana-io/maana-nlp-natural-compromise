@@ -84,6 +84,9 @@ type Query {
 
   sentiment(texts: [String!]!): [String!]!
   average(values: [String!]!): String!
+
+  extractKeyword(sentences: [String!]!): [String!]!
+  extractKeyphrases(sentences: [String!]!): [String!]!
 }
 
 type Mutation {

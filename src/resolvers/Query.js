@@ -27,6 +27,10 @@ const {
 const Sentiment = require('sentiment')
 let sentiment = new Sentiment()
 
+const retext = require('retext')
+const keywords = require('retext-keywords')
+const toString = require('nlcst-to-string')
+
 const flatten = arr => {
   return arr.reduce(function(prev, curr) {
     return prev.concat(curr)
@@ -213,6 +217,31 @@ const Query = {
   average(parent, { values }, ctx, info) {
     const arrSum = values.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
     return (arrSum / values.length).toString()
+  },
+
+  extractKeyword(parent, { sentences }, ctx, info) {
+    let res = []
+    retext()
+      .use(keywords)
+      .process(sentences.join('\n'), (err, file) => {
+        file.data.keywords.forEach(keyword =>
+          res.push(toString(keyword.matches[0].node))
+        )
+      })
+    return res
+  },
+  extractKeyphrases(parent, { sentences }, ctx, info) {
+    let res = []
+    retext()
+      .use(keywords)
+      .process(sentences.join('\n'), (err, file) => {
+        file.data.keyphrases.forEach(keyphrase => {
+          res.push(
+            keyphrase.matches[0].nodes.map(val => toString(val)).join('')
+          )
+        })
+      })
+    return res
   }
 }
 
