@@ -34,11 +34,19 @@ const _ = require('lodash')
 let tm = require('text-miner')
 
 const documentMatrixFromArray = text => {
-  console.log('TEXT', text)
   let corpus = new tm.Corpus([])
+  let upperCasedStopWords = tm.STOPWORDS.EN.map(lower => {
+    return lower.charAt(0).toUpperCase() + lower.substr(1)
+  })
   corpus.addDocs(text)
-  corpus.removeWords(tm.STOPWORDS.EN)
-  return new tm.DocumentTermMatrix(corpus)
+  let clean = corpus
+    .clean()
+    .trim()
+    .removeWords(upperCasedStopWords)
+    .removeWords(tm.STOPWORDS.EN)
+    .clean()
+
+  return new tm.DocumentTermMatrix(clean)
 }
 
 const flatten = arr => {
@@ -296,7 +304,9 @@ const Query = {
   },
 
   getTop10RankedeWords(parent, { ranked }, ctx, info) {
-    return _.take(_.orderBy(frequent, 'count', 'desc'), 10).map(x => x.word)
+    let terms = documentMatrixFromArray(text)
+    let frequent = terms.findFreqTerms(2)
+    return _.take(_.orderBy(frequent, 'count', 'desc'), 10)
   },
 
   combineLists(parent, { list1, list2 }, ctx, info) {
