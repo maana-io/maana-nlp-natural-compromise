@@ -20,6 +20,16 @@ enum NORMALIZATION_OPTIONS {
   honorifics
 }
 
+type RankedWord {
+  word: String
+  count: Float
+}
+
+input RankedWordInput {
+  word: String
+  count: Float
+}
+
 type Query {
   me: User
 
@@ -87,6 +97,19 @@ type Query {
 
   extractKeyword(sentences: [String!]!): [String!]!
   extractKeyphrases(sentences: [String!]!): [String!]!
+
+  getTop10FrequenteWordsInText(text: [String!]!): [String!]!
+  getTop100FrequenteRankedWordsInText(text: [String!]!): [RankedWord!]!
+
+  combinedRanked(
+    ranked1: [RankedWordInput!]!
+    ranked2: [RankedWordInput!]!
+  ): [RankedWord!]!
+
+  combineLists(list1: [String!]!, list2: [String!]!): [String!]!
+  getTop10RankedeWords(ranked: [RankedWordInput!]!): [String!]!
+
+  getVocabulary(text: [String!]!): [String!]!
 }
 
 type Mutation {

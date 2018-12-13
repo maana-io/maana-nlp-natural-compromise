@@ -1016,6 +1016,10 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
 
+const-max-uint32@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/const-max-uint32/-/const-max-uint32-1.0.2.tgz#f009bb6230e678ed874dd2d6a9cd9e3cbfabb676"
+
 constant-case@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/constant-case/-/constant-case-2.0.0.tgz#4175764d389d3fa9c8ecd29186ed6005243b6a46"
@@ -3069,6 +3073,10 @@ klaw-sync@^3.0.0:
   dependencies:
     graceful-fs "^4.1.11"
 
+lancaster-stemmer@^1.0.0:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/lancaster-stemmer/-/lancaster-stemmer-1.0.3.tgz#c85da42340d02aaa3438dcf214e7e5bd4cc7f10c"
+
 latest-version@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/latest-version/-/latest-version-3.1.0.tgz#a205383fea322b33b5ae3b18abee0dc2f356ee15"
@@ -3243,7 +3251,7 @@ lodash@4.17.5:
   version "4.17.5"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
-lodash@^4.13.1, lodash@^4.16.4, lodash@^4.17.10, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.8.0:
+lodash@^4.13.1, lodash@^4.16.4, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.8.0:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
 
@@ -4692,9 +4700,9 @@ retext-cliches@^1.0.0:
     quotation "^1.0.0"
     retext-cliches dunckr/no-cliches#db/export-list
 
-"retext-cliches@git+https://github.com/dunckr/no-cliches#db/export-list":
+retext-cliches@dunckr/no-cliches#db/export-list:
   version "0.1.0"
-  resolved "git+https://github.com/dunckr/no-cliches#d636504d5f927e684db325760caeb53264790d09"
+  resolved "https://codeload.github.com/dunckr/no-cliches/tar.gz/d636504d5f927e684db325760caeb53264790d09"
 
 retext-keywords@^4.0.2:
   version "4.0.2"
@@ -5047,6 +5055,10 @@ split@^1.0.0:
   dependencies:
     through "2"
 
+sprintf-js@^1.0.3:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.1.2.tgz#da1765262bf8c0f571749f2ad6c26300207ae673"
+
 sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
@@ -5292,6 +5304,22 @@ term-size@^1.2.0:
   dependencies:
     execa "^0.7.0"
 
+text-miner@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/text-miner/-/text-miner-1.0.6.tgz#eb405220a0ba0b801e38c9c354570a00e8ed5080"
+  dependencies:
+    lancaster-stemmer "^1.0.0"
+    stemmer "^1.0.0"
+    underscore "~1.8.2"
+    underscore.string "^3.2.2"
+    utils-define-read-only-property "^1.0.0"
+    validate.io-array-like "^1.0.1"
+    validate.io-boolean-primitive "^1.0.0"
+    validate.io-object "^1.0.4"
+    validate.io-object-array "^1.0.0"
+    validate.io-string-array "^1.0.0"
+    validate.io-string-primitive "^1.0.0"
+
 through2@^2.0.3:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"
@@ -5439,9 +5467,20 @@ undefsafe@^2.0.2:
   dependencies:
     debug "^2.2.0"
 
+underscore.string@^3.2.2:
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/underscore.string/-/underscore.string-3.3.5.tgz#fc2ad255b8bd309e239cbc5816fd23a9b7ea4023"
+  dependencies:
+    sprintf-js "^1.0.3"
+    util-deprecate "^1.0.2"
+
 underscore@^1.3.1:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.9.1.tgz#06dce34a0e68a7babc29b365b8e74b8925203961"
+
+underscore@~1.8.2:
+  version "1.8.3"
+  resolved "http://registry.npmjs.org/underscore/-/underscore-1.8.3.tgz#4f3fb53b106e6097fcf9cb4109f2a5e9bdfa5022"
 
 unherit@^1.0.4:
   version "1.1.1"
@@ -5601,7 +5640,7 @@ use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
 
-util-deprecate@~1.0.1:
+util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
 
@@ -5611,6 +5650,10 @@ util.promisify@^1.0.0:
   dependencies:
     define-properties "^1.1.2"
     object.getownpropertydescriptors "^2.0.3"
+
+utils-define-read-only-property@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/utils-define-read-only-property/-/utils-define-read-only-property-1.0.0.tgz#2e5db55acb0a9f06f5c81bad9f426d0e24f8e16f"
 
 utils-merge@1.0.1:
   version "1.0.1"
@@ -5638,6 +5681,59 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
+
+validate.io-array-like@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/validate.io-array-like/-/validate.io-array-like-1.0.2.tgz#7af9f7eb7b51715beb2215668ec5cce54faddb5a"
+  dependencies:
+    const-max-uint32 "^1.0.2"
+    validate.io-integer-primitive "^1.0.0"
+
+validate.io-array@^1.0.1, validate.io-array@^1.0.3:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/validate.io-array/-/validate.io-array-1.0.6.tgz#5b5a2cafd8f8b85abb2f886ba153f2d93a27774d"
+
+validate.io-boolean-primitive@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/validate.io-boolean-primitive/-/validate.io-boolean-primitive-1.0.0.tgz#bb14c9cb8683c3c9f3d1329a95a7768e3ee29eb5"
+
+validate.io-integer-primitive@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/validate.io-integer-primitive/-/validate.io-integer-primitive-1.0.0.tgz#a9aa010355fe8681c0fea6c1a74ad2419cadddc6"
+  dependencies:
+    validate.io-number-primitive "^1.0.0"
+
+validate.io-number-primitive@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/validate.io-number-primitive/-/validate.io-number-primitive-1.0.0.tgz#d2e01f202989369dcf1155449564203afe584e55"
+
+validate.io-object-array@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/validate.io-object-array/-/validate.io-object-array-1.0.0.tgz#997af84851111af01ff5daddc01f94c87f0e5143"
+  dependencies:
+    validate.io-array "^1.0.3"
+    validate.io-object "^1.0.3"
+
+validate.io-object@^1.0.3, validate.io-object@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/validate.io-object/-/validate.io-object-1.0.4.tgz#dca01eceee390e110dbc2af843c81f7bf33a41ab"
+  dependencies:
+    validate.io-array "^1.0.1"
+
+validate.io-string-array@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/validate.io-string-array/-/validate.io-string-array-1.0.0.tgz#e60e4801672d5659e3bc99a4d1044faf05a1dfa3"
+  dependencies:
+    validate.io-array "^1.0.3"
+    validate.io-string "^1.0.2"
+
+validate.io-string-primitive@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/validate.io-string-primitive/-/validate.io-string-primitive-1.0.1.tgz#b8135b9fb1372bde02fdd53ad1d0ccd6de798fee"
+
+validate.io-string@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/validate.io-string/-/validate.io-string-1.0.2.tgz#babf3a528b28e4b9e8017e3281fc76001ae6dc2f"
 
 validator@^10.0.0:
   version "10.9.0"

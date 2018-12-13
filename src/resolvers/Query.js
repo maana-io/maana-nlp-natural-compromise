@@ -30,6 +30,16 @@ let sentiment = new Sentiment()
 const retext = require('retext')
 const keywords = require('retext-keywords')
 const toString = require('nlcst-to-string')
+const _ = require('lodash')
+let tm = require('text-miner')
+
+const documentMatrixFromArray = text => {
+  console.log('TEXT', text)
+  let corpus = new tm.Corpus([])
+  corpus.addDocs(text)
+  corpus.removeWords(tm.STOPWORDS.EN)
+  return new tm.DocumentTermMatrix(corpus)
+}
 
 const flatten = arr => {
   return arr.reduce(function(prev, curr) {
@@ -242,6 +252,55 @@ const Query = {
         })
       })
     return res
+  },
+
+  getTop10FrequenteWordsInText(parent, { text }, ctx, info) {
+    let terms = documentMatrixFromArray(text)
+    let frequent = terms.findFreqTerms(2)
+    let topWords = _.take(_.orderBy(frequent, 'count', 'desc'), 10).map(
+      x => x.word
+    )
+
+    return topWords
+  },
+
+  getTop100FrequenteRankedWordsInText(parent, { text }, ctx, info) {
+    let terms = documentMatrixFromArray(text)
+    let frequent = terms.findFreqTerms(2)
+    let rankedWords = _.take(_.orderBy(frequent, 'count', 'desc'), 100)
+    return rankedWords
+  },
+
+  getVocabulary(parent, { text }, ctx, info) {
+    let terms = documentMatrixFromArray(text)
+    return terms.vocabulary
+  },
+
+  combinedRanked(parent, { ranked1, ranked2 }, ctx, info) {
+    let agg = []
+    let result = [...ranked1, ...ranked2].map(entry => {
+      let { word, count } = entry
+      let exists = _.find(agg, { word })
+      if (_.isEmpty(exists)) {
+        agg.push(entry)
+      } else {
+        let select = exists
+        let sum = select.count + count
+        agg = agg.filter(x => {
+          x.word === word
+        })
+        agg.push({ word, count: sum })
+      }
+    })
+    return agg
+  },
+
+  getTop10RankedeWords(parent, { ranked }, ctx, info) {
+    return _.take(_.orderBy(frequent, 'count', 'desc'), 10).map(x => x.word)
+  },
+
+  combineLists(parent, { list1, list2 }, ctx, info) {
+    return [...list1, ...list2]
   }
 }
 
