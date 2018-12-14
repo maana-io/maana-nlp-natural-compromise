@@ -107,7 +107,7 @@ type Query {
   ): [RankedWord!]!
 
   combineLists(list1: [String!]!, list2: [String!]!): [String!]!
-  getTop10RankedeWords(ranked: [RankedWordInput!]!): [String!]!
+  getTop10WordsFromRankedWords(ranked: [RankedWordInput!]!): [String!]!
 
   getVocabulary(text: [String!]!): [String!]!
 }
