@@ -304,9 +304,11 @@ const Query = {
   },
 
   getTop10WordsFromRankedWords(parent, { ranked }, ctx, info) {
-    let terms = documentMatrixFromArray(text)
-    let frequent = terms.findFreqTerms(2)
-    return _.take(_.orderBy(frequent, 'count', 'desc'), 10).map(x => x.word)
+    return _.uniq(
+      _.take(_.orderBy(ranked, 'count', 'desc'), 10)
+        .map(x => x.word)
+        .filter(x => x !== '')
+    )
   },
 
   combineLists(parent, { list1, list2 }, ctx, info) {
