@@ -108,8 +108,13 @@ type Query {
 
   combineLists(list1: [String!]!, list2: [String!]!): [String!]!
   getTop10WordsFromRankedWords(ranked: [RankedWordInput!]!): [String!]!
-
   getVocabulary(text: [String!]!): [String!]!
+  sentencesWithImportantWords(
+    sentences: [String!]!
+    words: [String!]!
+  ): [String!]!
+  wordsFromSentences(sentences: [String!]!): [String!]!
+  wordsToRankedWords(words: [String!]!): [RankedWord!]!
 }
 
 type Mutation {

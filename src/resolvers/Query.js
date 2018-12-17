@@ -311,6 +311,39 @@ const Query = {
     )
   },
 
+  sentencesWithImportantWords(parent, { sentences, words }) {
+    return _.uniq(
+      _.flatMap(
+        words.map(word =>
+          sentences.filter(sentence => sentence.indexOf(word) !== -1)
+        )
+      )
+    )
+  },
+
+  wordsFromSentences(parent, { sentences }) {
+    return _.flatMap(sentences.map(sentence => sentence.split(' ')))
+  },
+
+  wordsToRankedWords(parent, { words }) {
+    let agg = []
+    words.forEach(word => {
+      let exists = _.find(agg, { word })
+      if (_.isEmpty(exists)) {
+        agg.push({ word, count: 1 })
+      } else {
+        let select = exists
+        console.log('exists', exists)
+        let sum = select.count + 1
+        agg = agg.filter(x => {
+          x.word === word
+        })
+        agg.push({ word, count: sum })
+      }
+    })
+    return agg
+  },
+
   combineLists(parent, { list1, list2 }, ctx, info) {
     return [...list1, ...list2]
   }
