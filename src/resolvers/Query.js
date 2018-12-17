@@ -315,7 +315,9 @@ const Query = {
     return _.uniq(
       _.flatMap(
         words.map(word =>
-          sentences.filter(sentence => sentence.indexOf(word) !== -1)
+          sentences.filter(
+            sentence => sentence.indexOf(word.toLowerCase()) !== -1
+          )
         )
       )
     )
