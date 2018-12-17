@@ -334,13 +334,9 @@ const Query = {
       if (_.isEmpty(exists)) {
         agg.push({ word, count: 1 })
       } else {
-        let select = exists
-        console.log('exists', exists)
-        let sum = select.count + 1
-        agg = agg.filter(x => {
-          x.word === word
+        agg = agg.map(x => {
+          return x.word === word ? { word, count: x.count + 1 } : x
         })
-        agg.push({ word, count: sum })
       }
     })
     return agg
