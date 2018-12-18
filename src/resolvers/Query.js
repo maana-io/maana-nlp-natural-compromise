@@ -316,7 +316,8 @@ const Query = {
       _.flatMap(
         words.map(word =>
           sentences.filter(
-            sentence => sentence.indexOf(word.toLowerCase()) !== -1
+            sentence =>
+              sentence.toLowerCase().indexOf(word.toLowerCase()) !== -1
           )
         )
       )
