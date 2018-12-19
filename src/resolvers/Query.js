@@ -62,9 +62,14 @@ const Query = {
   },
 
   nouns(parent, { texts }, ctx, info) {
-    let res = texts.map(text => {
-      return nouns(text, 'array')
-    })
+    let res = [['']]
+    try {
+      res = texts.map(text => {
+        return nouns(text, 'array')
+      })
+    } catch (e) {
+      console.log('no nouns', e)
+    }
     return flatten(res)
   },
 
@@ -83,30 +88,50 @@ const Query = {
   },
 
   people(parent, { texts }, ctx, info) {
-    let res = texts.map(text => {
-      return people(text, 'array')
-    })
+    let res = [['']]
+    try {
+      res = texts.map(text => {
+        return people(text, 'array')
+      })
+    } catch (e) {
+      console.log('no people', e)
+    }
     return flatten(res)
   },
 
   places(parent, { texts }, ctx, info) {
-    let res = texts.map(text => {
-      return places(text, 'array')
-    })
+    let res = [['']]
+    try {
+      res = texts.map(text => {
+        return places(text, 'array')
+      })
+    } catch (e) {
+      console.log('no places', e)
+    }
     return flatten(res)
   },
 
   organizations(parent, { texts }, ctx, info) {
-    let res = texts.map(text => {
-      return organizations(text, 'array')
-    })
+    let res = [['']]
+    try {
+      res = texts.map(text => {
+        return organizations(text, 'array')
+      })
+    } catch (e) {
+      console.log('no organizations', e)
+    }
     return flatten(res)
   },
 
   topics(parent, { texts }, ctx, info) {
-    let res = texts.map(text => {
-      return topics(text, 'array')
-    })
+    let res = [['']]
+    try {
+      res = texts.map(text => {
+        return topics(text, 'array')
+      })
+    } catch (e) {
+      console.log('no organizations', e)
+    }
     return flatten(res)
   },
 
