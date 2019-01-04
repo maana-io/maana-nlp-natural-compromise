@@ -24,6 +24,14 @@ const {
   classify
 } = require('../naturalWrapper')
 
+const {
+  getConcept,
+  getConceptStartingWith,
+  getConceptEndingWith,
+  getConceptWithRelation,
+  getEdgesForConcepts
+} = require('../conceptNetWrapper')
+
 const Sentiment = require('sentiment')
 let sentiment = new Sentiment()
 
@@ -31,6 +39,7 @@ const retext = require('retext')
 const keywords = require('retext-keywords')
 const toString = require('nlcst-to-string')
 const _ = require('lodash')
+
 let tm = require('text-miner')
 
 const documentMatrixFromArray = text => {
@@ -370,6 +379,56 @@ const Query = {
 
   combineLists(parent, { list1, list2 }, ctx, info) {
     return [...list1, ...list2]
+  },
+
+  async conceptNetLookup(parent, { texts }, ctx, info) {
+    let language = 'en'
+    let res = await Promise.all(
+      texts.map(async text => {
+        return await getConcept(text, language)
+      })
+    )
+
+    return res
+  },
+
+  async conceptNetLookupStartingWith(parent, { texts }, ctx, info) {
+    let language = 'en'
+    let res = await Promise.all(
+      texts.map(async text => {
+        return await getConceptStartingWith(text, language)
+      })
+    )
+
+    return res
+  },
+  async conceptNetLookupEndingWith(parent, { texts }, ctx, info) {
+    let language = 'en'
+    let res = await Promise.all(
+      texts.map(async text => {
+        return await getConceptEndingWith(text, language)
+      })
+    )
+
+    return res
+  },
+  async conceptNetLookupWithRleation(parent, { texts, relation }, ctx, info) {
+    let language = 'en'
+    let res = await Promise.all(
+      texts.map(async text => {
+        return await getConceptWithRelation(text, relation, language)
+      })
+    )
+    return res
+  },
+
+  getSurfaceTextFromConcepts(parent, { concepts }, ctx, info) {
+    let res = concepts.map(concept => {
+      let { edges } = concept
+      return edges.map(e => e.surfaceText)
+    })
+
+    return flatten(res)
   }
 }
 

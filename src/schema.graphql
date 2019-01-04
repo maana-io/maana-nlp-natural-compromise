@@ -115,6 +115,71 @@ type Query {
   ): [String!]!
   wordsFromSentences(sentences: [String!]!): [String!]!
   wordsToRankedWords(words: [String!]!): [RankedWord!]!
+  conceptNetLookup(texts: [String!]!): [Concept]
+  conceptNetLookupStartingWith(texts: [String!]!): [Concept]
+  conceptNetLookupEndingWith(texts: [String!]!): [Concept]
+  conceptNetLookupWithRleation(texts: [String!]!, relation: String): [Concept]
+  getSurfaceTextFromConcepts(concepts: [ConceptInput]): [String]
+}
+
+input CNodeInput {
+  label: String
+  language: String
+  term: String
+  sense_label: String
+}
+
+type CNode {
+  label: String
+  language: String
+  term: String
+  sense_label: String
+}
+
+input RelInput {
+  label: String
+}
+
+type Rel {
+  label: String
+}
+
+input SourceInput {
+  contributor: String
+}
+
+type Source {
+  contributor: String
+}
+
+input EdgeInput {
+  dataset: String
+  end: CNodeInput
+  license: String
+  rel: RelInput
+  sources: [SourceInput]
+  start: CNodeInput
+  surfaceText: String
+  weight: Float
+}
+
+type Edge {
+  dataset: String
+  end: CNode
+  license: String
+  rel: Rel
+  sources: [Source]
+  start: CNode
+  surfaceText: String
+  weight: Float
+}
+
+input ConceptInput {
+  edges: [EdgeInput]
+}
+
+type Concept {
+  edges: [Edge]
 }
 
 type Mutation {

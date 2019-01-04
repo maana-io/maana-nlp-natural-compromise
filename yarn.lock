@@ -994,6 +994,14 @@ concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
 
+concept-net@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/concept-net/-/concept-net-0.4.0.tgz#718bdf212d4f8e1576b63a0c839f944e63aaaf53"
+  dependencies:
+    validate.io-function "^1.0.2"
+    validate.io-object "^1.0.4"
+    validate.io-string-primitive "^1.0.0"
+
 config-chain@^1.1.11:
   version "1.1.12"
   resolved "https://registry.yarnpkg.com/config-chain/-/config-chain-1.1.12.tgz#0fde8d091200eb5e808caf25fe618c02f48e4efa"
@@ -3581,7 +3589,7 @@ node-fetch@^1.0.1, node-fetch@^1.7.3:
     encoding "^0.1.11"
     is-stream "^1.0.1"
 
-node-fetch@^2.0.0:
+node-fetch@^2.0.0, node-fetch@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.3.0.tgz#1a1d940bbfb916a1d3e0219f037e89e71f8c5fa5"
 
@@ -5696,6 +5704,10 @@ validate.io-array@^1.0.1, validate.io-array@^1.0.3:
 validate.io-boolean-primitive@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/validate.io-boolean-primitive/-/validate.io-boolean-primitive-1.0.0.tgz#bb14c9cb8683c3c9f3d1329a95a7768e3ee29eb5"
+
+validate.io-function@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/validate.io-function/-/validate.io-function-1.0.2.tgz#343a19802ed3b1968269c780e558e93411c0bad7"
 
 validate.io-integer-primitive@^1.0.0:
   version "1.0.0"

@@ -9,11 +9,13 @@
   "dependencies": {
     "bcryptjs": "2.4.3",
     "compromise": "^11.12.1",
+    "concept-net": "^0.4.0",
     "graphql-yoga": "1.16.2",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.11",
     "natural": "^0.6.1",
     "nlcst-to-string": "^2.0.2",
+    "node-fetch": "^2.3.0",
     "prisma-binding": "2.1.6",
     "retext": "^6.0.1",
     "retext-cliches": "^1.0.0",
