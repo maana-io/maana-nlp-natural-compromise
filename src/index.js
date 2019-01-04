@@ -18,6 +18,4 @@ const server = new GraphQLServer({
   context: req => ({ ...req, db })
 })
 
-server.start({ port: 4000 })
-
-console.log('Listening on port 4000')
+server.start(() => console.log('Server is running on localhost:4000'))
