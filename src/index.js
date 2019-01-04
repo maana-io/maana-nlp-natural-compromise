@@ -12,7 +12,12 @@ const db = new Prisma({
 const server = new GraphQLServer({
   typeDefs: './src/schema.graphql',
   resolvers,
+  resolverValidationOptions: {
+    requireResolversForResolveType: false
+  },
   context: req => ({ ...req, db })
 })
 
 server.start({ port: 4000 })
+
+console.log('Listening on port 4000')
