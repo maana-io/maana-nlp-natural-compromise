@@ -425,7 +425,7 @@ const Query = {
   getSurfaceTextFromConcepts(parent, { concepts }, ctx, info) {
     let res = concepts.map(concept => {
       let { edges } = concept
-      return edges.map(e => e.surfaceText)
+      return edges.map(e => e.surfaceText.replace('[[', '').replace(']]', ''))
     })
 
     return flatten(res)
