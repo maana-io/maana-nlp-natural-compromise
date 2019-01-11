@@ -385,7 +385,7 @@ const Query = {
     let language = 'en'
     let res = await Promise.all(
       texts.map(async text => {
-        return await getConcept(text, language)
+        return await getConcept(_.lowerCase(text), language)
       })
     )
 
@@ -396,7 +396,7 @@ const Query = {
     let language = 'en'
     let res = await Promise.all(
       texts.map(async text => {
-        return await getConceptStartingWith(text, language)
+        return await getConceptStartingWith(_.lowerCase(text), language)
       })
     )
 
@@ -406,7 +406,7 @@ const Query = {
     let language = 'en'
     let res = await Promise.all(
       texts.map(async text => {
-        return await getConceptEndingWith(text, language)
+        return await getConceptEndingWith(_.lowerCase(text), language)
       })
     )
 
@@ -416,7 +416,11 @@ const Query = {
     let language = 'en'
     let res = await Promise.all(
       texts.map(async text => {
-        return await getConceptWithRelation(text, relation, language)
+        return await getConceptWithRelation(
+          _.lowerCase(text),
+          relation,
+          language
+        )
       })
     )
     return res
