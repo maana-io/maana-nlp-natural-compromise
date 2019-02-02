@@ -206,12 +206,9 @@ type AuthPayload {
 
 type User {
   id: ID!
-  email: String!
-  name: String!
 }
 
 type Mutation {
-
   createClassifier(name: String!): Classifier
   addLabeledDocumentToClassifier(
     classifierName: String
