@@ -1,0 +1,29 @@
+kind: helm-release
+apiVersion: 1.0
+build:
+  context: .
+  dockerfile: Dockerfile
+install:
+  chart: charts/logic
+  values:
+  - values.dev.yaml?
+  - secrets.dev.yaml?
+  set:
+    replicaCount: 1
+    image:
+      repository: logic
+      tag: $(tag)
+      pullPolicy: Never
+    ingress:
+      hosts:
+      # This expands to [space.s.]logic.<guid>.<region>.aksapp.io
+      - $(spacePrefix)logic$(hostSuffix)
+configurations:
+  develop:
+    build:
+      useGitIgnore: true
+    container:
+      sync:
+      - "!**/package.json"
+      iterate:
+        processesToKill: [node]

@@ -1,4 +1,21 @@
-# import Post from "./generated/prisma.graphql"
+type Tag {
+  text: String
+  normal: String
+  tags: [String!]
+}
+
+type Classifier {
+  id: ID!
+  name: String
+  status: String
+  serialized: String
+}
+
+type Classification {
+  label: String
+  value: Float
+}
+
 enum SUPPORTED_TOKENIZERS {
   WordTokenizer
   WordPunctTokenizer
@@ -182,6 +199,17 @@ type Concept {
   edges: [Edge]
 }
 
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+type User {
+  id: ID!
+  email: String!
+  name: String!
+}
+
 type Mutation {
   signup(email: String!, password: String!, name: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
@@ -196,15 +224,4 @@ type Mutation {
 
 type Subscription {
   feedSubscription: String!
-}
-
-type AuthPayload {
-  token: String!
-  user: User!
-}
-
-type User {
-  id: ID!
-  email: String!
-  name: String!
 }
