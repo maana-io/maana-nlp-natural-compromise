@@ -207,7 +207,6 @@ type AuthPayload {
 type User {
   id: ID!
   email: String!
-  name: String!
 }
 
 type Mutation {
