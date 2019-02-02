@@ -211,6 +211,7 @@ type User {
 }
 
 type Mutation {
+
   createClassifier(name: String!): Classifier
   addLabeledDocumentToClassifier(
     classifierName: String
