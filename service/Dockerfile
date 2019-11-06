@@ -11,4 +11,4 @@ COPY . /app
 
 CMD npm start
 
-EXPOSE 8050
+EXPOSE 4000
