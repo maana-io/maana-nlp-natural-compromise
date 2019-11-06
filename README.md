@@ -3,7 +3,7 @@ Simple GraphQL wrapper for Natural.js and Compromise.js
 
 ## Deployment
 
-1. Make sure you have [Q CLI](https://www.npmjs.com/package/graphql-cli-maana) installed by running 
+1. Make sure you have [Q CLI](https://www.npmjs.com/package/graphql-cli-maana/v/3.2.1-beta.37) installed by running 
   `npm install -g graphql-cli-maana`
   
 2. Login to your docker registry of choice using `docker login` or `az acr login`
